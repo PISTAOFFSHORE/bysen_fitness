@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYSEN FITNESS PONDICHERRY | Premium Gym</title>
+  <style>
+    :root {
+      --bg: #060606;
+      --bg-2: #0d0d0f;
+      --panel: #111214;
+      --panel-2: #17181c;
+      --text: #f5f1e8;
+      --muted: #b7aea0;
+      --gold: #d4af37;
+      --gold-soft: #f3df9b;
+      --line: rgba(212, 175, 55, 0.18);
+      --white-line: rgba(255,255,255,0.08);
+      --shadow: 0 24px 60px rgba(0,0,0,0.45);
+      --radius: 22px;
+      --max-width: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.08), transparent 28%),
+        linear-gradient(180deg, #050505 0%, #0b0b0d 45%, #050505 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px),
+                  linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: -1;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    .section {
+      padding: 92px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.2vw, 3.4rem);
+      text-align: center;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 54px;
+      font-size: 1rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      background: rgba(212,175,55,0.08);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 26px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      transition: 0.35s ease;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #c79b22, #f1d57a);
+      color: #111;
+      box-shadow: 0 10px 30px rgba(212,175,55,0.18);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(212,175,55,0.26);
+    }
+
+    .btn-dark {
+      border-color: rgba(255,255,255,0.14);
+      color: #fff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn-dark:hover {
+      border-color: var(--gold);
+      color: var(--gold-soft);
+      background: rgba(212,175,55,0.06);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5,5,5,0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .navbar {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.85rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.72) 45%, rgba(0,0,0,0.84) 100%),
+        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 75% 20%, rgba(212,175,55,0.18), transparent 22%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.7rem);
+      line-height: 1.02;
+      margin-bottom: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero p {
+      color: #ddd3c4;
+      max-width: 640px;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(23,24,28,0.9), rgba(10,10,12,0.92));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-panel h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      color: var(--muted);
+    }
+
+    .hero-panel li {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .stat-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-box h3 {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .stat-box p {
+      color: #d8d0c1;
+      font-size: 0.95rem;
+    }
+
+    .about-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-image,
+    .contact-visual {
+      position: relative;
+    }
+
+    .about-image::after,
+    .contact-visual::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -18px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 28px;
+      z-index: -1;
+    }
+
+    .about-image img,
+    .contact-visual img {
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      min-height: 430px;
+      object-fit: cover;
+      width: 100%;
+      border: 1px solid rgba(212,175,55,0.14);
+    }
+
+    .about-content h3,
+    .contact-info h3 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .about-content h3 span,
+    .contact-info h3 span {
+      color: var(--gold);
+    }
+
+    .about-content p,
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .feature-list li {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #ebe3d6;
+    }
+
+    .program-grid,
+    .trainer-grid,
+    .testimonial-grid,
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card,
+    .price-card,
+    .testimonial-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(18,18,20,0.98), rgba(10,10,12,0.98));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .card:hover,
+    .price-card:hover,
+    .testimonial-card:hover,
+    .contact-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212,175,55,0.28);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.55);
+    }
+
+    .card img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 26px;
+    }
+
+    .card-body h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .card-body p {
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.22);
+      color: var(--gold-soft);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .pricing {
+      background: linear-gradient(180deg, rgba(212,175,55,0.03), transparent 12%, transparent 100%);
+    }
+
+    .price-card {
+      padding: 34px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: rgba(212,175,55,0.4);
+      transform: scale(1.03);
+      background: linear-gradient(180deg, rgba(28,24,12,0.95), rgba(12,10,7,0.98));
+    }
+
+    .price-card .tag {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #c79b22, #f1d57a);
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .price-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 2.7rem;
+      font-weight: 900;
+      color: var(--gold);
+      margin: 16px 0;
+    }
+
+    .price-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 28px;
+      color: var(--muted);
+    }
+
+    .testimonial-card {
+      padding: 28px;
+    }
+
+    .testimonial-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .testimonial-card h4 {
+      margin-bottom: 4px;
+    }
+
+    .testimonial-card span {
+      color: var(--gold-soft);
+      font-size: 0.94rem;
+    }
+
+    .contact-card {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .contact-item {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    form {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(212,175,55,0.45);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
+    }
+
+    textarea {
+      min-height: 135px;
+      resize: vertical;
+    }
+
+    .form-message {
+      min-height: 24px;
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid rgba(212,175,55,0.1);
+      padding: 28px 0;
+      background: #050505;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-wrap p {
+      color: var(--muted);
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      transition: 0.3s ease;
+    }
+
+    .socials a:hover {
+      border-color: rgba(212,175,55,0.35);
+      color: var(--gold-soft);
+      background: rgba(212,175,55,0.06);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .program-grid,
+      .trainer-grid,
+      .testimonial-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 130px 0 90px;
+      }
+
+      .hero-grid {
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(8,8,8,0.98);
+        border-bottom: 1px solid rgba(212,175,55,0.12);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px 4%;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hero-grid,
+      .stats,
+      .about-grid,
+      .contact-grid,
+      .program-grid,
+      .trainer-grid,
+      .testimonial-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .about-image::after,
+      .contact-visual::after {
+        display: none;
+      }
+
+      .hero h1 span {
+        display: inline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo" style="display:flex;align-items:center;gap:10px;">
+        <img src="img/BySen HD_logi.jpg" alt="Bysen Fitness Logo" style="height:42px;width:auto;object-fit:contain;">
+        <span style="font-size:0.9rem;letter-spacing:1px;">BYSEN FITNESS</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#trainers">Trainers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content reveal show">
+        <span class="eyebrow">Elite Fitness Experience</span>
+        <h1>BYSEN FITNESS <span>PONDICHERRY</span></h1>
+        <p>
+          A dark premium gym website design built for power, discipline, and transformation.
+          Showcase your training programs, premium membership plans, expert coaches, and brand strength with a bold luxury look.
+        </p>
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-gold">Join The Club</a>
+          <a href="#programs" class="btn btn-dark">View Programs</a>
+        </div>
+        <div class="stats">
+          <div class="stat-box">
+            <h3>200+</h3>
+            <p>Premium Members</p>
+          </div>
+          <div class="stat-box">
+            <h3>12+</h3>
+            <p>Certified Trainers</p>
+          </div>
+          <div class="stat-box">
+            <h3>5.30 AM - 11 PM</h3>
+            <p>Open Every Day</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel reveal">
+        <h3>Why Members Choose Us</h3>
+        <ul>
+          <li>Luxury dark interior inspired design with a strong brand feel</li>
+          <li>Strength, cardio, fat loss, transformation, and personal coaching</li>
+          <li>Professional trainers and motivating gym atmosphere</li>
+          <li>Premium memberships for serious fitness goals</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1400&q=80" alt="Premium gym training area">
+      </div>
+      <div class="about-content reveal">
+        <span class="eyebrow">About Us</span>
+        <h3>Built For <span>Performance</span> And Premium Training</h3>
+        <p>
+          BYSEN FITNESS PONDICHERRY is designed for people who want more than a normal workout space.
+          It is a premium fitness environment focused on transformation, consistency, and results.
+        </p>
+        <p>
+          From beginners to advanced members, every training plan is structured to help improve strength, endurance,
+          physique, and confidence with expert support.
+        </p>
+        <ul class="feature-list">
+          <li>✔ Premium strength and cardio equipment</li>
+          <li>✔ Personal training and customized plans</li>
+          <li>✔ Modern atmosphere with luxury dark styling</li>
+          <li>✔ Professional guidance for body transformation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="programs">
+    <div class="container">
+      <h2 class="section-title reveal">Signature <span>Programs</span></h2>
+      <p class="section-subtitle reveal">
+        Powerful training options designed for muscle building, weight loss, stamina, and personal transformation.
+      </p>
+
+      <div class="program-grid">
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1400&q=80" alt="Strength training program">
+          <div class="card-body">
+            <span class="badge">Power Zone</span>
+            <h3>Strength Training</h3>
+            <p>Focused muscle-building routines to improve power, physique, stability, and athletic performance.</p>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=80" alt="Cardio and HIIT">
+          <div class="card-body">
+            <span class="badge">Shred Zone</span>
+            <h3>Cardio & HIIT</h3>
+            <p>High-intensity sessions that help burn fat, increase endurance, and keep your energy levels high.</p>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1400&q=80" alt="Personal training program">
+          <div class="card-body">
+            <span class="badge">Elite Coaching</span>
+            <h3>Personal Training</h3>
+            <p>Private coaching with customized plans, technique correction, and full progress tracking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trainers">
+    <div class="container">
+      <h2 class="section-title reveal">Expert <span>Trainers</span></h2>
+      <p class="section-subtitle reveal">
+        Meet dedicated coaches who guide every member with discipline, motivation, and professional expertise.
+      </p>
+
+      <div class="trainer-grid">
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?auto=format&fit=crop&w=1400&q=80" alt="Trainer Arun Kumar">
+          <div class="card-body">
+            <h3>Arun Kumar</h3>
+            <p>Strength specialist focused on muscle growth, lifting technique, and progressive overload training.</p>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1400&q=80" alt="Trainer Divya Raj">
+          <div class="card-body">
+            <h3>Divya Raj</h3>
+            <p>Transformation coach for fat loss, women’s fitness, movement quality, and confidence building.</p>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?auto=format&fit=crop&w=1400&q=80" alt="Trainer Vikram S">
+          <div class="card-body">
+            <h3>Vikram S</h3>
+            <p>Functional fitness expert specializing in endurance, mobility, agility, and core conditioning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <h2 class="section-title reveal">Premium <span>Memberships</span></h2>
+      <p class="section-subtitle reveal">
+        Flexible packages designed for casual training, regular fitness, and serious body transformation.
+      </p>
+
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <h3>Essential Plan</h3>
+          <div class="price">₹1,499<span style="font-size:1rem;color:#d2c7b7;"> / month</span></div>
+          <ul>
+            <li>Full Gym Access</li>
+            <li>Strength & Cardio Area</li>
+            <li>Basic Support</li>
+            <li>Locker Access</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark">Select Plan</a>
+        </div>
+
+        <div class="price-card featured reveal">
+          <span class="tag">Most Popular</span>
+          <h3>Premium Plan</h3>
+          <div class="price">₹2,499<span style="font-size:1rem;color:#e0d6c6;"> / month</span></div>
+          <ul>
+            <li>All Essential Features</li>
+            <li>Diet Guidance</li>
+            <li>Group Sessions</li>
+            <li>Monthly Progress Review</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Select Plan</a>
+        </div>
+
+        <div class="price-card reveal">
+          <h3>Elite PT Plan</h3>
+          <div class="price">₹4,999<span style="font-size:1rem;color:#d2c7b7;"> / month</span></div>
+          <ul>
+            <li>Dedicated Personal Coach</li>
+            <li>Custom Workout Plan</li>
+            <li>Transformation Strategy</li>
+            <li>Weekly Monitoring</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark">Select Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">Member <span>Results</span></h2>
+      <p class="section-subtitle reveal">
+        Strong feedback from members who trust BYSEN FITNESS PONDICHERRY for their health and body goals.
+      </p>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <p>“The premium atmosphere and disciplined training style keep me motivated every day. This place feels powerful and professional.”</p>
+          <h4>Praveen</h4>
+          <span>Member</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>“The trainers guide you properly and the environment feels next level. It is one of the best premium gym experiences in town.”</p>
+          <h4>Keerthana</h4>
+          <span>Fitness Member</span>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>“I joined for transformation and the personal attention made a huge difference. The system here is professional and result-oriented.”</p>
+          <h4>Rahul</h4>
+          <span>Transformation Client</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Contact Us</span>
+        <h3>Start Your <span>Fitness Journey</span></h3>
+        <p>
+          Contact BYSEN FITNESS PONDICHERRY for memberships, transformation packages, personal training, and free consultation.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-item">
+            <strong>Address</strong>
+            <span>Pondicherry, Tamil Nadu, India</span>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <span>+91 9655221117</span>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>info@bysenfitness.com</span>
+          </div>
+          <div class="contact-item">
+            <strong>Working Hours</strong>
+            <span>Monday to Sunday • 5:30 AM to 11:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-visual reveal">
+        <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=1400&q=80" alt="Luxury gym interior">
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <select id="service" required>
+            <option value="">Select Service</option>
+            <option>Membership Enquiry</option>
+            <option>Personal Training</option>
+            <option>Weight Loss Program</option>
+            <option>General Consultation</option>
+          </select>
+          <textarea id="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn btn-gold">Send Enquiry</button>
+          <div class="form-message" id="formMessage"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>© 2026 BYSEN FITNESS PONDICHERRY. All Rights Reserved.</p>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const links = document.querySelectorAll('.nav-links a');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        links.forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      formMessage.textContent = `Thank you, ${name}! Your premium enquiry has been submitted successfully.`;
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
